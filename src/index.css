@@ -12,3 +12,30 @@
     justify-content: center;
     align-items: center;
 }
+#alerta {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+#links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+
+#links a{
+    text-decoration: none;
+    color: hsl(223, 64%, 34%);
+}
+
+@media (max-width: 800px) {
+    #canvas {
+        display: none;
+    }
+
+    #alerta {
+        display:block;
+    }
+}
