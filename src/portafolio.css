@@ -20,12 +20,17 @@ main {
 }
 .cards img {
     width: 400px;
-    height: auto;
+    height: 200px;
+   
 }
 
 #titol{
     text-align: center;
     margin-bottom: 2rem;
+}
+
+p{
+    text-align: center;
 }
 
 .cards{
