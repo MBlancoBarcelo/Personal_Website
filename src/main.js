@@ -1,5 +1,12 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+const modolebronjames = document.getElementById("modolebronjames");
+
+modolebronjames.addEventListener("click", () => {
+    url = "./img/placeholder.PNG";
+    main();
+});
+
 
 let background;
 let playerImage;
@@ -9,6 +16,8 @@ player.x = 190;
 player.y = 160;
 player.width = 150;
 player.height = 150;
+
+let url = "./img/micaralit.PNG"
 
 let camera = {
   x: 0,
@@ -40,7 +49,7 @@ let keys = getKeys();
 
 async function main() {
   background = await loadImage("./img/cv.png");
-  playerImage = await loadImage("./img/micaralit.PNG");
+  playerImage = await loadImage(url);
 
   requestAnimationFrame(mainLoop);
 
