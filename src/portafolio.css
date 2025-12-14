@@ -4,10 +4,7 @@
     padding: 2rem;
 }
 
-html,body {
-    margin: 0   ;
-    height: 100%;
-}
+
 
 *{
     text-decoration: none;
@@ -40,20 +37,7 @@ p{
     border-radius: 8px;
 }
 
-footer {
-    display: flex;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-    padding: 1rem;
-    justify-content: space-between;
-    background-color: blueviolet;
-    z-index: 1;
-}
+
 
 #portafolio{
     display: flex;
