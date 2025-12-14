@@ -40,7 +40,7 @@ let keys = getKeys();
 
 async function main() {
   background = await loadImage("./img/cv.png");
-  playerImage = await loadImage("./img/placeholder.PNG");
+  playerImage = await loadImage("./img/micaralit.PNG");
 
   requestAnimationFrame(mainLoop);
 
