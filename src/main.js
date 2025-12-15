@@ -17,7 +17,7 @@ player.y = 160;
 player.width = 150;
 player.height = 150;
 
-let url = "./img/micaralit.PNG"
+let url = "./img/fotomia.png"
 
 let camera = {
   x: 0,
