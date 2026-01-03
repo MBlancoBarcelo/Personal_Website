@@ -1,6 +1,47 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const modolebronjames = document.getElementById("modolebronjames");
+const botones = document.getElementById("botones");
+let interval;
+
+botones.addEventListener("pointerdown", (event) => {
+  interval = setInterval(() => {
+    let key;
+    switch(event.target.id) {
+      case "arriba":
+        key = "ArrowUp";
+        break;
+      case "abajo":
+        key = "ArrowDown";
+        break;
+      case "izquierda":
+        key = "ArrowLeft";
+        break;
+      case "derecha":
+        key = "ArrowRight";
+        break;
+    }
+    keys[key] = true;
+    console.log(event.target.id);
+  }, 100);
+}); 
+
+botones.addEventListener("mouseup", () => {
+  ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"].forEach(key => {
+  keys[key] = false;
+});
+  console.log(keys);
+  clearInterval(interval);
+});
+
+botones.addEventListener("mouseleave", () => {
+  ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"].forEach(key => {
+  keys[key] = false;
+});
+  clearInterval(interval);
+});
+
+
 
 modolebronjames.addEventListener("click", () => {
     url = "./img/placeholder.PNG";
