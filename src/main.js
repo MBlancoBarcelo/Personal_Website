@@ -44,7 +44,7 @@ botones.addEventListener("pointerleave", () => {
 
 
 modolebronjames.addEventListener("click", () => {
-    url = "./img/placeholder.PNG";
+    url = "./imgs/placeholder.PNG";
     main();
 });
 
@@ -58,7 +58,7 @@ player.y = 160;
 player.width = 150;
 player.height = 150;
 
-let url = "./img/fotomia.png"
+let url = "./imgs/fotomia.png"
 
 let camera = {
   x: 0,
@@ -89,7 +89,7 @@ function getKeys() {
 let keys = getKeys();
 
 async function main() {
-  background = await loadImage("./img/cv.png");
+  background = await loadImage("./imgs/cv.png");
   playerImage = await loadImage(url);
 
   requestAnimationFrame(mainLoop);
