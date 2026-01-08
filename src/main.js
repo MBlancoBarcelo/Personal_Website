@@ -26,7 +26,7 @@ botones.addEventListener("pointerdown", (event) => {
   }, 100);
 }); 
 
-botones.addEventListener("mouseup", () => {
+botones.addEventListener("pointerup", () => {
   ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"].forEach(key => {
   keys[key] = false;
 });
@@ -34,7 +34,7 @@ botones.addEventListener("mouseup", () => {
   clearInterval(interval);
 });
 
-botones.addEventListener("mouseleave", () => {
+botones.addEventListener("pointerleave", () => {
   ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"].forEach(key => {
   keys[key] = false;
 });
