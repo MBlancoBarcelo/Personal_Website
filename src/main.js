@@ -1,3 +1,7 @@
+import cvImg from "/src/imgs/cv.png";
+import lebronjames from "/src/imgs/placeholder.PNG" ;
+import fotomia from "/src/imgs/fotomia.png";
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const modolebronjames = document.getElementById("modolebronjames");
@@ -44,7 +48,7 @@ botones.addEventListener("pointerleave", () => {
 
 
 modolebronjames.addEventListener("click", () => {
-    url = "/src/imgs/placeholder.PNG";
+    url = lebronjames;
     main();
 });
 
@@ -58,7 +62,7 @@ player.y = 160;
 player.width = 150;
 player.height = 150;
 
-let url = "/src/imgs/fotomia.png"
+let url = fotomia;
 
 let camera = {
   x: 0,
@@ -89,7 +93,7 @@ function getKeys() {
 let keys = getKeys();
 
 async function main() {
-  background = await loadImage("/src/imgs/cv.png");
+  background = await loadImage(cvImg);
   playerImage = await loadImage(url);
 
   requestAnimationFrame(mainLoop);
