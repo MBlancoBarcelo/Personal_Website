@@ -140,6 +140,8 @@ function collisions() {
 function update() {
   const speed = 2;
 
+  console.log(speed)
+
   let newX = player.x;
   let newY = player.y;
   if (keys["ArrowUp"]) newY -= speed;
