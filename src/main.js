@@ -49,7 +49,7 @@ botones.addEventListener("pointerleave", () => {
 
 modolebronjames.addEventListener("click", () => {
     url = lebronjames;
-    main();
+    main()
 });
 
 
