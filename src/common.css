@@ -10,12 +10,13 @@ footer {
     text-align: center;
     padding: 1rem;
     justify-content: space-between;
-    background-color: hsl(223, 83%, 56%);
+    background-color: #000594;
+    color: white;
     z-index: 1;
 }
 
 a{
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
