@@ -1,6 +1,13 @@
 import cvImg from "/src/imgs/cv.png";
-import lebronjames from "/src/imgs/placeholder.PNG" ;
-import fotomia from "/src/imgs/fotomia.png";
+import derecha from "/src/imgs/derecha.png"; 
+import fotomia from "/src/imgs/centro.png";
+import izquierda from "/src/imgs/izquierda.png";
+import arriba from "/src/imgs/arriba.png";
+import abajo from "/src/imgs/abajo.png";
+import diagonalArribaDerecha from "/src/imgs/arriba-derecha.png";
+import diagonalArribaIzquierda from "/src/imgs/arriba-izquierda.png";
+import diagonalAbajoDerecha from "/src/imgs/abajo-derecha.png";
+import diagonalAbajoIzquierda from "/src/imgs/abajo-izquierda.png";
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -46,16 +53,14 @@ botones.addEventListener("pointerleave", () => {
 });
 
 
-
-modolebronjames.addEventListener("click", () => {
-    url = lebronjames;
-    main()
-});
-
-
 let background;
 let playerImage;
 let player = {}
+
+modolebronjames.addEventListener("click", () => {
+    url = derecha;
+    main()
+});
 
 player.x = 190;
 player.y = 160;
@@ -121,36 +126,74 @@ function mainLoop() {
 
 function draw() {
   ctx.drawImage(background, camera.x, camera.y,500,500,0,0,500,500);
-  // Draw player relative to camera (canvas coordinates)
   const pw = player.width || 32;
   const ph = player.height || 32;
   ctx.drawImage(playerImage, player.x - camera.x, player.y - camera.y, pw, ph);
 }
 
-function collisions() {
-  const playerWidth = player.width || 32;
-  const playerHeight = player.height || 32;
-
-  return player.x >= borders.minx &&
-         player.x + playerWidth <= borders.maxx &&
-         player.y >= borders.miny &&
-         player.y + playerHeight <= borders.maxy;
-}
-
 function update() {
   const speed = 2;
 
-  console.log(speed)
-
   let newX = player.x;
   let newY = player.y;
-  if (keys["ArrowUp"]) newY -= speed;
-  if (keys["ArrowDown"]) newY += speed;
-  if (keys["ArrowLeft"]) newX -= speed;
-  if (keys["ArrowRight"]) newX += speed;
 
-  const pw = player.width || 32;
-  const ph = player.height || 32;
+  let swift = keys["Shift"];
+  let isMoving = false;
+
+
+  if (keys["ArrowUp"] && keys["ArrowRight"]) {
+    newY -= swift ? speed * 2 : speed;
+    newX += swift ? speed * 2 : speed;
+    playerImage.src = diagonalArribaDerecha;
+    isMoving = true;
+  }
+  else if (keys["ArrowUp"] && keys["ArrowLeft"]) {
+    newY -= swift ? speed * 2 : speed;
+    newX -= swift ? speed * 2 : speed;
+    playerImage.src = diagonalArribaIzquierda;
+    isMoving = true;
+  }
+  else if (keys["ArrowDown"] && keys["ArrowRight"]) {
+    newY += swift ? speed * 2 : speed;
+    newX += swift ? speed * 2 : speed;
+    playerImage.src = diagonalAbajoDerecha;
+    isMoving = true;
+  }
+  else if (keys["ArrowDown"] && keys["ArrowLeft"]) {
+    newY += swift ? speed * 2 : speed;
+    newX -= swift ? speed * 2 : speed;
+    playerImage.src = diagonalAbajoIzquierda;
+    isMoving = true;
+  }
+
+  else if (keys["ArrowUp"]) {
+    newY -= swift ? speed * 2 : speed;
+    playerImage.src = arriba;
+    isMoving = true;
+  }
+  else if (keys["ArrowDown"]) {
+    newY += swift ? speed * 2 : speed;
+    playerImage.src = abajo;
+    isMoving = true;
+  }
+  else if (keys["ArrowLeft"]) {
+    newX -= swift ? speed * 2 : speed;
+    playerImage.src = izquierda;
+    isMoving = true;
+  }
+  else if (keys["ArrowRight"]) {
+    newX += swift ? speed * 2 : speed;
+    playerImage.src = derecha;
+    isMoving = true;
+  }
+
+  if (!isMoving) {
+    playerImage.src = fotomia;
+  }
+
+  const pw = player.width;
+  const ph = player.height;
+
   newX = Math.min(Math.max(newX, borders.minx), borders.maxx - pw);
   newY = Math.min(Math.max(newY, borders.miny), borders.maxy - ph);
 
@@ -159,6 +202,7 @@ function update() {
 
   camera.x = player.x - canvas.width / 2 + pw / 2;
   camera.y = player.y - canvas.height / 2 + ph / 2;
+
   camera.x = Math.min(Math.max(camera.x, borders.minx), borders.maxx - canvas.width);
   camera.y = Math.min(Math.max(camera.y, borders.miny), borders.maxy - canvas.height);
 }
