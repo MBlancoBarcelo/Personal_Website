@@ -15,6 +15,18 @@ const modolebronjames = document.getElementById("modolebronjames");
 const botones = document.getElementById("botones");
 let interval;
 
+let images = {
+  centro : await loadImage(fotomia),
+  derecha : await loadImage(derecha),
+  izquierda : await loadImage(izquierda),
+  arriba : await loadImage(arriba),
+  abajo : await loadImage(abajo),
+  diagonalArribaDerecha : await loadImage(diagonalArribaDerecha),
+  diagonalArribaIzquierda : await loadImage(diagonalArribaIzquierda),
+  diagonalAbajoDerecha : await loadImage(diagonalAbajoDerecha),
+  diagonalAbajoIzquierda : await loadImage(diagonalAbajoIzquierda)
+}
+
 botones.addEventListener("pointerdown", (event) => {
   interval = setInterval(() => {
     let key;
@@ -67,7 +79,7 @@ player.y = 160;
 player.width = 150;
 player.height = 150;
 
-let url = fotomia;
+playerImage = images.centro;
 
 let camera = {
   x: 0,
@@ -144,51 +156,51 @@ function update() {
   if (keys["ArrowUp"] && keys["ArrowRight"]) {
     newY -= swift ? speed * 2 : speed;
     newX += swift ? speed * 2 : speed;
-    playerImage.src = diagonalArribaDerecha;
+    playerImage = images.diagonalArribaDerecha;
     isMoving = true;
   }
   else if (keys["ArrowUp"] && keys["ArrowLeft"]) {
     newY -= swift ? speed * 2 : speed;
     newX -= swift ? speed * 2 : speed;
-    playerImage.src = diagonalArribaIzquierda;
+    playerImage = images.diagonalArribaIzquierda;
     isMoving = true;
   }
   else if (keys["ArrowDown"] && keys["ArrowRight"]) {
     newY += swift ? speed * 2 : speed;
     newX += swift ? speed * 2 : speed;
-    playerImage.src = diagonalAbajoDerecha;
+    playerImage = images.diagonalAbajoDerecha;
     isMoving = true;
   }
   else if (keys["ArrowDown"] && keys["ArrowLeft"]) {
     newY += swift ? speed * 2 : speed;
     newX -= swift ? speed * 2 : speed;
-    playerImage.src = diagonalAbajoIzquierda;
+    playerImage = images.diagonalAbajoIzquierda;
     isMoving = true;
   }
 
   else if (keys["ArrowUp"]) {
     newY -= swift ? speed * 2 : speed;
-    playerImage.src = arriba;
+    playerImage = images.arriba;
     isMoving = true;
   }
   else if (keys["ArrowDown"]) {
     newY += swift ? speed * 2 : speed;
-    playerImage.src = abajo;
+    playerImage = images.abajo;
     isMoving = true;
   }
   else if (keys["ArrowLeft"]) {
     newX -= swift ? speed * 2 : speed;
-    playerImage.src = izquierda;
+    playerImage = images.izquierda;
     isMoving = true;
   }
   else if (keys["ArrowRight"]) {
     newX += swift ? speed * 2 : speed;
-    playerImage.src = derecha;
+    playerImage = images.derecha;
     isMoving = true;
   }
 
   if (!isMoving) {
-    playerImage.src = fotomia;
+    playerImage = images.centro;
   }
 
   const pw = player.width;
