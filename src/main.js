@@ -106,7 +106,6 @@ let keys = getKeys();
 
 async function main() {
   background = await loadImage(cvImg);
-  playerImage = await loadImage(images.centro);
 
   requestAnimationFrame(mainLoop);
 
