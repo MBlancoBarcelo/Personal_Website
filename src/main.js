@@ -69,11 +69,6 @@ let background;
 let playerImage;
 let player = {}
 
-modolebronjames.addEventListener("click", () => {
-    url = derecha;
-    main()
-});
-
 player.x = 190;
 player.y = 160;
 player.width = 150;
@@ -111,7 +106,7 @@ let keys = getKeys();
 
 async function main() {
   background = await loadImage(cvImg);
-  playerImage = await loadImage(url);
+  playerImage = await loadImage(images.centro);
 
   requestAnimationFrame(mainLoop);
 
